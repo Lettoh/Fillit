@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_check_tetrominos.c                            .::    .:/ .      .::   */
+/*   sort_int_tab.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 16:51:06 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 17:02:46 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/15 19:52:55 by ftourret     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/15 19:53:10 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-int	ft_check_tetrominos(char **tetro)
+void		sort_int_tab(int *tab, unsigned int size)
 {
-	int	i;
-	int	j;
+	unsigned int	i;
+	int				tmp;
+	unsigned int	j;
 
-	i = 0;
-	while (tetro[i])
+	j = 0;
+	tmp = 0;
+	while (j < size)
 	{
-		j = 0;
-		if (ft_linelen(tetro[i]) != 4)
-			ft_unvalid_file();
-		while (tetro[i][j])
+		i = 0;
+		while (i < size - 1)
 		{
-			if (tetro[i][j] != '.' || tetro[i][j] != '#')
-				ft_unvalid_file();
-			j++;
+			if (tab[i] > tab[i + 1])
+			{
+				tmp = tab[i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = tmp;
+			}
+			i++;
 		}
-		i++;
+		j++;
 	}
-	return (0);
 }

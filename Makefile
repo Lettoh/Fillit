@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 17:04:27 by naplouvi    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/20 15:40:34 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -15,10 +15,13 @@ NAME = fillit
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC =	fillit.c\
-		ft_error.c\
-		ft_check_tetrominos.c\
+SRC =	error.c\
+		check.c\
 		main.c\
+		resolve.c\
+		map.c\
+		tetros.c\
+		info.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
@@ -49,6 +52,7 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -rf $(OBJ)
+	@make -C libft/ clean
 	@echo "$(LIGHT_PINK)Suppression des .o de "$(NAME)"\n"
 
 fclean: clean
